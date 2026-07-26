@@ -1,0 +1,236 @@
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 80px);
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  background: transparent;
+  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.4s ease;
+}
+
+.logo-big {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.logo-small {
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: 0.75;
+  color: var(--color-white);
+  text-transform: lowercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-items a {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-block;
+  color: var(--color-white-85);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 4px 2px;
+}
+
+.nav-items a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-accent-light);
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-out;
+}
+
+.nav-items a:hover,
+.nav-items a:focus-visible {
+  color: var(--color-white);
+}
+
+.nav-items a:hover::after,
+.nav-items a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.cta-btn {
+  background: linear-gradient(100deg, var(--color-accent-dark), var(--color-accent-light));
+  color: var(--color-white);
+  border: none;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-accent-glow);
+}
+
+.logo:focus-visible,
+.cta-btn:focus-visible,
+.hamburger:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 3px;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 12px;
+  z-index: 1100;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  transition: all 0.3s ease;
+}
+
+.hamburger--open span:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger--open span:nth-child(2) {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* Navbar scroll animation */
+.navbar.navbar--scrolled {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 90%;
+  padding: 10px 16px;
+  background: rgba(9, 13, 24, 0.75);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-white-15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.navbar--scrolled .logo {
+  margin-right: 8px;
+}
+
+.navbar--scrolled .nav-links {
+  gap: 22px;
+}
+
+.navbar--scrolled .cta-btn {
+  margin-left: 8px;
+}
+
+@media (max-width: 825px) {
+  .nav-links {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: calc(100% - 40px);
+    max-width: 360px;
+    background: rgba(9, 13, 24, 0.95);
+    backdrop-filter: blur(16px);
+    border-radius: 18px;
+    padding: 20px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+    z-index: 1000;
+  }
+
+  .nav-links.nav-links--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .cta-btn {
+    order: 2;
+    padding: 8px 14px;
+    font-size: 13px;
+    margin-left: 20px;
+  }
+
+  .hamburger {
+    order: 3;
+  }
+
+  .navbar {
+    position: sticky;
+    top: 20px;
+    padding: 16px 20px;
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+
+  .navbar.navbar--scrolled {
+    top: 10px;
+    max-width: calc(100% - 20px);
+    padding: 8px 14px;
+  }
+
+  .hamburger span {
+    width: 20px;
+  }
+}

@@ -1,0 +1,234 @@
+.testi-section {
+  position: relative;
+  background: var(--color-surface-light);
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+
+.testi-promise {
+  padding: 0 72px 40px;
+  max-width: 720px;
+}
+
+.testi-promise-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 700;
+  color: var(--color-ink-900);
+  margin-bottom: 16px;
+}
+
+.testi-promise-body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-ink-700);
+}
+
+@media (max-width: 640px) {
+  .testi-promise {
+    padding: 0 24px 32px;
+  }
+}
+
+.testi-header {
+  padding: 0 72px;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.testi-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testi-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink-500);
+  letter-spacing: 0.5px;
+}
+
+.testi-label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gradient-accent);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.testi-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(36px, 4.5vw, 62px);
+  font-weight: 700;
+  color: var(--color-ink-900);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  max-width: 640px;
+}
+
+.testi-heading em {
+  font-style: normal;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.testi-track {
+  display: flex;
+  gap: 28px;
+  padding: 16px 72px 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+  user-select: none;
+}
+
+.testi-track::-webkit-scrollbar { display: none; }
+
+.testi-card {
+  flex: 0 0 340px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+}
+
+.testi-card.visible {
+  animation: cardReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes cardReveal {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card-media {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+}
+
+.card-avatar-ring {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  margin-bottom: 28px;
+}
+
+.card-initials {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+}
+
+.card-quote-text {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.card-stars {
+  display: flex;
+  gap: 2px;
+  margin-top: 24px;
+}
+
+.card-lightning-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-accent);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.card-footer {
+  padding: 20px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-brand-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-ink-900);
+}
+
+.testi-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 72px;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.4s;
+}
+
+.testi-nav.visible { opacity: 1; }
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d1d1;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  width: 28px;
+  border-radius: 4px;
+  background: var(--gradient-accent);
+}
+
+@media (max-width: 768px) {
+  .testi-header { padding: 0 24px; }
+  .testi-track { padding: 12px 24px 24px; gap: 20px; }
+  .testi-card { flex: 0 0 280px; }
+}

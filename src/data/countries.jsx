@@ -1,0 +1,21 @@
+export const countries = [
+  {
+    flag: "🇦🇪",
+    name: "United Arab Emirates",
+    code: "971",
+    pattern: "xxx xxx xxxx",
+  },
+  { flag: "🇸🇦", name: "Saudi Arabia", code: "966", pattern: "xx xxx xxxx" },
+  { flag: "🇶🇦", name: "Qatar", code: "974", pattern: "xxx xxxxx" },
+  { flag: "🇴🇲", name: "Oman", code: "968", pattern: "xx xxx xxx" },
+  { flag: "🇰🇼", name: "Kuwait", code: "965", pattern: "xxx xxxxx" },
+  { flag: "🇧🇭", name: "Bahrain", code: "973", pattern: "xxxx xxxx" },
+  { flag: "🇮🇳", name: "India", code: "91", pattern: "xxxxx xxxxx" },
+  { flag: "🇵🇰", name: "Pakistan", code: "92", pattern: "xxx xxxxxxx" },
+  { flag: "🇺🇸", name: "United States", code: "1", pattern: "(xxx) xxx-xxxx" },
+  { flag: "🇬🇧", name: "United Kingdom", code: "44", pattern: "xxxx xxxxxx" },
+  { flag: "🇨🇦", name: "Canada", code: "1", pattern: "(xxx) xxx-xxxx" },
+  { flag: "🇦🇺", name: "Australia", code: "61", pattern: "x xxx xxx xxx" },
+  { flag: "🇸🇬", name: "Singapore", code: "65", pattern: "xxxx xxxx" },
+  { flag: "🇲🇾", name: "Malaysia", code: "60", pattern: "xx-xxxx xxxx" },
+];

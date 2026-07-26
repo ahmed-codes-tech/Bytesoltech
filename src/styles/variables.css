@@ -1,0 +1,58 @@
+/*
+ * Bytesoltech design tokens.
+ *
+ * Replaces the leftover Digital Gravity purple/violet palette. Per the
+ * blueprint's hero design direction ("deep navy or charcoal gradient...
+ * dark + one accent color — electric blue or gold"), we use a dark navy
+ * base with electric blue as the single accent, matching Bytesoltech's
+ * actual brand palette (navy/blue/black).
+ *
+ * Add new tokens here as later sections need them — don't hardcode new
+ * hex values directly in component CSS.
+ */
+
+:root {
+  /* Backgrounds */
+  --color-navy-950: #05070d;
+  --color-navy-900: #090d18;
+  --color-navy-800: #101830;
+  --color-navy-700: #182142;
+
+  /* Accent */
+  --color-accent: #3b82f6;
+  --color-accent-light: #60a5fa;
+  --color-accent-dark: #1d4ed8;
+
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-white-85: rgba(255, 255, 255, 0.85);
+  --color-white-70: rgba(255, 255, 255, 0.7);
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-15: rgba(255, 255, 255, 0.15);
+  --color-white-08: rgba(255, 255, 255, 0.08);
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Shape / effects */
+  --radius-pill: 999px;
+  --radius-lg: 20px;
+  --shadow-accent-glow: 0 0 40px rgba(59, 130, 246, 0.35);
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* The one accent gradient used everywhere an accent gradient is needed
+     (buttons, dots, badges, gradient text, hover glows). Per the
+     blueprint's hero direction ("dark + one accent color — electric
+     blue or gold"), we standardized on electric blue as the single
+     accent — do not introduce a second accent color elsewhere. */
+  --gradient-accent: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent-light));
+
+  /* Light-section tokens. The blueprint alternates dark and light
+     sections for rhythm (e.g. dark Hero -> light Pain section). These
+     are the "off-white" background and ink colors for text on it. */
+  --color-surface-light: #f5f4f0;
+  --color-ink-900: #0d0d0d;
+  --color-ink-700: #444444;
+  --color-ink-500: #6b6b6b;
+}
