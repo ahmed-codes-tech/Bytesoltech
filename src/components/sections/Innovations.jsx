@@ -20,15 +20,7 @@ const Innovations = () => {
         <span>Get A Quote</span>
       </button>
 
-      <div className="social-icons-stack visible">
-        {['behance', 'instagram', 'facebook', 'linkedin', 'youtube'].map((platform, i) => (
-          <a key={i} href="#" className="social-icon" aria-label={platform}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zM3 11.987h3.813c2.171 0 2.171-3.389 0-3.389H3v3.389zm0 5.014h4.937c2.509 0 2.509-3.895 0-3.895H3v3.895z"/>
-            </svg>
-          </a>
-        ))}
-      </div>
+     
 
       <div className="innovations-container">
         <div className="innovations-header">
