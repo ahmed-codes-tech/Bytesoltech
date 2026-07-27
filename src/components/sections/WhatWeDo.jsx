@@ -1,6 +1,7 @@
 import React from 'react';
-import earthImg from '../../assets/earth-bg.png';
+import { CircuitPattern, DotGridPattern } from '../ui/CornerPatterns';
 import './WhatWeDo.css';
+
 
 // This section previously claimed "Fueled Up 500+ Brands," showed fake
 // press logos (Al Jazeera, Gulf News, etc.), and listed a fabricated
@@ -10,6 +11,14 @@ import './WhatWeDo.css';
 // one-liners, nothing invented. This is a condensed teaser bridging
 // Hero -> Portfolio; the full clickable 3-panel "Industries router"
 // from the blueprint is separate, larger work still ahead.
+//
+// UI/UX pass: dropped the Earth-image backdrop entirely. It was carried
+// over from the old "Global Presence" framing (implying worldwide
+// operations), which doesn't fit an honest "three specific niches"
+// section — and three dark sections in a row (Hero -> this -> Services)
+// was flattening the page's visual rhythm. This section is now a light
+// surface, breaking that up, with an abstract decorative glow instead
+// of the mismatched globe photo.
 const NICHES = [
   {
     name: 'Health & Wellness Coaches',
@@ -37,9 +46,13 @@ const NICHES = [
 const WhatWeDo = () => {
   return (
     <section className="what-we-do-section" id="industries">
-      <div className="earth-backdrop" aria-hidden="true">
-        <img src={earthImg} className="earth-image" alt="" />
-      </div>
+      <div className="what-we-do-glow" aria-hidden="true" />
+
+      <CircuitPattern variant="primary" className="wwd-corner-pattern wwd-corner-pattern--top-left" />
+      <CircuitPattern variant="variant" className="wwd-corner-pattern wwd-corner-pattern--bottom-right" />
+      <DotGridPattern className="wwd-dot-grid wwd-dot-grid--top-right" />
+      <DotGridPattern className="wwd-dot-grid wwd-dot-grid--bottom-left" />
+      <div className="wwd-center-glow" aria-hidden="true" />
 
       <div className="what-we-do-content">
         <div className="section-badge">

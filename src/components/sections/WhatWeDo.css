@@ -1,7 +1,7 @@
 .what-we-do-section {
   position: relative;
   overflow: hidden;
-  background: var(--color-surface-light);
+  background: radial-gradient(ellipse at center, #ffffff 0%, #f1f5fd 100%);
   padding: var(--space-section-y) var(--space-section-x);
 }
 
@@ -17,6 +17,98 @@
   height: 140%;
   background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 70%);
   pointer-events: none;
+}
+
+/* Very soft glow centered behind the badge/title/cards — just enough
+   to keep the section from feeling flat, not a visible "spotlight." */
+.wwd-center-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Corner decoration (circuit-capsule + dot-grid) ---------- */
+/* Purely atmospheric. Sized/positioned to stay in the corners, fade
+   toward the section's center, and sit behind the content layer
+   (z-index 0, same stacking context as the glow above; .what-we-do-content
+   is not given a z-index but follows in DOM order and is opaque, which
+   is sufficient here since these patterns are also masked to fade out
+   well before reaching the centered content column). */
+
+.wwd-corner-pattern,
+.wwd-dot-grid {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  --wwd-base-transform: ;
+}
+
+.wwd-corner-pattern {
+  width: 300px;
+  height: 260px;
+  opacity: 0.29;
+  animation: wwdCornerFloat 15s ease-in-out infinite;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at var(--wwd-fade-origin, 0% 0%), black 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse 80% 80% at var(--wwd-fade-origin, 0% 0%), black 0%, transparent 72%);
+}
+
+@keyframes wwdCornerFloat {
+  0%, 100% { transform: var(--wwd-base-transform); }
+  50% { transform: var(--wwd-base-transform) translateY(4px); }
+}
+
+.wwd-corner-pattern--top-left {
+  top: -10px;
+  left: -10px;
+  --wwd-fade-origin: 0% 0%;
+}
+
+.wwd-corner-pattern--bottom-right {
+  bottom: -30px;
+  right: -30px;
+  width: 380px;
+  height: 330px;
+  --wwd-base-transform: rotate(184deg) scale(1.08);
+  transform: var(--wwd-base-transform);
+  --wwd-fade-origin: 0% 0%;
+}
+
+.wwd-dot-grid {
+  width: 160px;
+  height: 160px;
+  opacity: 0.5;
+  animation: wwdCornerFloat 17s ease-in-out infinite;
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at var(--wwd-fade-origin, 0% 0%), black 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 75% 75% at var(--wwd-fade-origin, 0% 0%), black 0%, transparent 75%);
+}
+
+.wwd-dot-grid--top-right {
+  top: 0;
+  right: 0;
+  --wwd-fade-origin: 100% 0%;
+}
+
+.wwd-dot-grid--bottom-left {
+  bottom: 0;
+  left: 0;
+  --wwd-fade-origin: 0% 100%;
+}
+
+@media (max-width: 860px) {
+  .wwd-corner-pattern,
+  .wwd-dot-grid {
+    /* Section narrows and the card grid stacks full-width on smaller
+       screens, leaving no safe corner margin — hide rather than risk
+       ever overlapping the content, per the hard "never overlap"
+       requirement. */
+    display: none;
+  }
 }
 
 .what-we-do-content {
@@ -73,18 +165,20 @@
 }
 
 .niche-card {
+  position: relative;
+  z-index: 1;
   background: var(--color-white);
-  border: 1px solid var(--color-border-light);
+  border: 1px solid rgba(20, 20, 40, 0.06);
   border-radius: var(--radius-md);
   padding: var(--space-32) var(--space-24);
-  box-shadow: var(--shadow-xs);
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  box-shadow: 0 1px 2px rgba(20, 20, 40, 0.04), 0 8px 24px rgba(20, 20, 40, 0.05);
+  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium), border-color 0.35s var(--ease-premium);
 }
 
 .niche-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(var(--color-accent-rgb), 0.3);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
+  border-color: rgba(var(--color-accent-rgb), 0.25);
+  box-shadow: 0 1px 2px rgba(20, 20, 40, 0.04), 0 20px 40px rgba(20, 20, 40, 0.09), 0 0 0 1px rgba(var(--color-accent-rgb), 0.06);
 }
 
 .niche-icon {
