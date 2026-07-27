@@ -35,12 +35,6 @@
   --font-display: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
 
-  /* Shape / effects */
-  --radius-pill: 999px;
-  --radius-lg: 20px;
-  --shadow-accent-glow: 0 0 40px rgba(59, 130, 246, 0.35);
-  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
-
   /* The one accent gradient used everywhere an accent gradient is needed
      (buttons, dots, badges, gradient text, hover glows). Per the
      blueprint's hero direction ("dark + one accent color — electric
@@ -55,4 +49,83 @@
   --color-ink-900: #0d0d0d;
   --color-ink-700: #444444;
   --color-ink-500: #6b6b6b;
+
+  /* RGB triplets (no "#", no "rgb()") so components can build their own
+     opacity variant via rgba(var(--color-x-rgb), 0.NN) without ever
+     hardcoding the underlying color channels. Use these instead of
+     writing a new rgba(...) literal. */
+  --color-accent-rgb: 59, 130, 246;
+  --color-accent-light-rgb: 96, 165, 250;
+  --color-white-rgb: 255, 255, 255;
+  --color-shadow-rgb: 0, 0, 0;
+  --color-navy-900-rgb: 9, 13, 24;
+
+  /* Semantic utility colors — not brand accents, but still shouldn't be
+     hardcoded per-component. Reused anywhere we need a status/alert
+     indicator or a neutral (non-brand) UI border. */
+  --color-success: #34d399;
+  --color-alert: #ef4444;
+  --color-border-light: #e5e7eb;
+  --color-inactive: #d1d1d1;
+
+  /* ---------- Systematic spacing scale ---------- */
+  /* One shared vertical rhythm for every section, so padding doesn't
+     drift to a different one-off number per component. Overridden once
+     per breakpoint below — every section that uses var(--space-section-y)
+     gets the responsive behavior for free. */
+  --space-section-y: 136px;
+  --space-section-x: 48px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* ---------- Radius scale ---------- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---------- Shadow / elevation scale ---------- */
+  /* For light surfaces (cards on white/off-white backgrounds). Dark
+     glass surfaces use border + glow instead of a black shadow, since a
+     black shadow is nearly invisible on a near-black background. */
+  --shadow-xs: 0 1px 3px rgba(var(--color-shadow-rgb), 0.06);
+  --shadow-sm: 0 4px 12px rgba(var(--color-shadow-rgb), 0.08);
+  --shadow-md: 0 12px 32px rgba(var(--color-shadow-rgb), 0.12);
+  --shadow-lg: 0 24px 60px rgba(var(--color-shadow-rgb), 0.30);
+  --shadow-accent-glow: 0 0 40px rgba(59, 130, 246, 0.35);
+  --shadow-accent-glow-sm: 0 8px 24px rgba(var(--color-accent-rgb), 0.28);
+
+  /* Glass-card treatment shared by every card on a dark surface (Services,
+     Industries-dark variants, mockup panels) instead of each component
+     picking its own border/blur values. */
+  --glass-bg: var(--color-white-08);
+  --glass-border: 1px solid var(--color-white-15);
+  --glass-blur: blur(20px);
+
+  /* ---------- Motion ---------- */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s var(--ease-premium);
+  --transition-base: 0.3s var(--ease-premium);
+  --transition-slow: 0.5s var(--ease-premium);
+}
+
+@media (max-width: 960px) {
+  :root {
+    --space-section-y: 96px;
+    --space-section-x: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --space-section-y: 72px;
+    --space-section-x: 20px;
+  }
 }

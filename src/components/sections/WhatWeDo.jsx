@@ -2,47 +2,71 @@ import React from 'react';
 import earthImg from '../../assets/earth-bg.png';
 import './WhatWeDo.css';
 
+// This section previously claimed "Fueled Up 500+ Brands," showed fake
+// press logos (Al Jazeera, Gulf News, etc.), and listed a fabricated
+// multi-country "Global Presence" (USA/UAE/Saudi Arabia/Pakistan) —
+// none of which is true for Bytesoltech. Replaced with the blueprint's
+// own Section 6 ("Industries We Serve") copy: real niches, real
+// one-liners, nothing invented. This is a condensed teaser bridging
+// Hero -> Portfolio; the full clickable 3-panel "Industries router"
+// from the blueprint is separate, larger work still ahead.
+const NICHES = [
+  {
+    name: 'Health & Wellness Coaches',
+    line: 'Fill your calendar with clients who are ready to change — not tire-kickers.',
+    icon: (
+      <path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1.2 4.5 2.5C11.5 6.2 13 5 15 5c3.5 0 5.5 3.5 3.5 7.5C16 16.65 12 21 12 21z" />
+    ),
+  },
+  {
+    name: 'Restoration Companies',
+    line: 'When disaster strikes, be the first call — not the third search result.',
+    icon: (
+      <path d="M12 2s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z" />
+    ),
+  },
+  {
+    name: 'Dubai Real Estate',
+    line: 'Stand out in the world\u2019s most competitive property market.',
+    icon: (
+      <path d="M4 21V9l8-5 8 5v12h-5v-6H9v6H4z" />
+    ),
+  },
+];
+
 const WhatWeDo = () => {
-  const logoItems = ["arabianpost", "ALJAZEERA", "ZAWYA", "GULF NEWS", "Khaleej Times"];
-  const locations = ["USA", "UAE", "Saudi Arabia", "Pakistan"];
-
   return (
-    <section className="what-we-do-section">
-      <div className="section-badge">
-        <span className="badge-dot"></span>
-        What We Do
+    <section className="what-we-do-section" id="industries">
+      <div className="earth-backdrop" aria-hidden="true">
+        <img src={earthImg} className="earth-image" alt="" />
       </div>
 
-      <h2 className="section-title">
-        Fueled Up 500+ Brands to
-        <br />
-        Roar with Next-GenTech
-      </h2>
-
-      <div className="planet-scene">
-        <div className="planet-earth-wrapper">
-          <div className="planet-earth">
-            <img src={earthImg} className="earth-image" alt="Earth" />
-          </div>
+      <div className="what-we-do-content">
+        <div className="section-badge">
+          <span className="badge-dot" />
+          Who We Build For
         </div>
 
-        <div className="brand-logos-overlay">
-          <div className="brand-logos-track">
-            {[...logoItems, ...logoItems].map((logo, i) => (
-              <div key={i} className="logo-item">{logo}</div>
-            ))}
-          </div>
-        </div>
-      </div>
+        <h2 className="section-title">
+          Built for Your Industry.
+          <br />
+          Not &ldquo;Businesses in General.&rdquo;
+        </h2>
 
-      <div className="global-presence">
-        <span className="presence-label">Our Global Presence</span>
-        <div className="presence-locations">
-          {locations.map((location, i) => (
-            <React.Fragment key={i}>
-              <span className="location-dot"></span>
-              <span className="location-text">{location}</span>
-            </React.Fragment>
+        <p className="section-subline">
+          Generic marketing gets generic results. We specialize in three industries — and
+          we speak your language.
+        </p>
+
+        <div className="niche-grid">
+          {NICHES.map((niche) => (
+            <div key={niche.name} className="niche-card">
+              <svg className="niche-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true">
+                {niche.icon}
+              </svg>
+              <h3 className="niche-name">{niche.name}</h3>
+              <p className="niche-line">{niche.line}</p>
+            </div>
           ))}
         </div>
       </div>
