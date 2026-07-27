@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from './pages/Home';
 import './styles/global.css';
-import Hero from './components/sections/Hero';
+// import Hero from './components/sections/Hero';
 import WhatWeDo from './components/sections/WhatWeDo';
 import Innovations from './components/sections/Innovations';
 import Partners from './components/sections/Partners';
@@ -17,7 +17,6 @@ function App() {
   return (
     <div className="App">
       <Home />
-      <Hero />
       <WhatWeDo />
       <Innovations />
       <Partners />
