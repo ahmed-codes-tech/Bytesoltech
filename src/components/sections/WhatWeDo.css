@@ -1,207 +1,148 @@
-.what-we-do-section {
+.wwd-section {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at center, #ffffff 0%, #f1f5fd 100%);
-  padding: var(--space-section-y) var(--space-section-x);
+  background: linear-gradient(180deg, #f4f7fd 0%, #eef2fb 100%);
+  padding: 96px 24px;
 }
-
-/* Abstract decorative glow — replaces the old Earth-image backdrop.
-   Same visual language as the Hero's glow (soft radial accent blur) so
-   the two sections feel like one consistent brand, just inverted from
-   dark to light. */
-.what-we-do-glow {
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 55%;
-  height: 140%;
-  background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* Very soft glow centered behind the badge/title/cards — just enough
-   to keep the section from feeling flat, not a visible "spotlight." */
-.wwd-center-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 900px;
-  height: 600px;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ---------- Corner decoration (circuit-capsule + dot-grid) ---------- */
-/* Purely atmospheric. Sized/positioned to stay in the corners, fade
-   toward the section's center, and sit behind the content layer
-   (z-index 0, same stacking context as the glow above; .what-we-do-content
-   is not given a z-index but follows in DOM order and is opaque, which
-   is sufficient here since these patterns are also masked to fade out
-   well before reaching the centered content column). */
-
-.wwd-corner-pattern,
-.wwd-dot-grid {
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  --wwd-base-transform: ;
-}
-
-.wwd-corner-pattern {
-  width: 300px;
-  height: 260px;
-  opacity: 0.29;
-  animation: wwdCornerFloat 15s ease-in-out infinite;
-  -webkit-mask-image: radial-gradient(ellipse 80% 80% at var(--wwd-fade-origin, 0% 0%), black 0%, transparent 72%);
-  mask-image: radial-gradient(ellipse 80% 80% at var(--wwd-fade-origin, 0% 0%), black 0%, transparent 72%);
-}
-
-@keyframes wwdCornerFloat {
-  0%, 100% { transform: var(--wwd-base-transform); }
-  50% { transform: var(--wwd-base-transform) translateY(4px); }
-}
-
-.wwd-corner-pattern--top-left {
-  top: -10px;
-  left: -10px;
-  --wwd-fade-origin: 0% 0%;
-}
-
-.wwd-corner-pattern--bottom-right {
-  bottom: -30px;
-  right: -30px;
-  width: 380px;
-  height: 330px;
-  --wwd-base-transform: rotate(184deg) scale(1.08);
-  transform: var(--wwd-base-transform);
-  --wwd-fade-origin: 0% 0%;
-}
-
-.wwd-dot-grid {
-  width: 160px;
-  height: 160px;
-  opacity: 0.5;
-  animation: wwdCornerFloat 17s ease-in-out infinite;
-  -webkit-mask-image: radial-gradient(ellipse 75% 75% at var(--wwd-fade-origin, 0% 0%), black 0%, transparent 75%);
-  mask-image: radial-gradient(ellipse 75% 75% at var(--wwd-fade-origin, 0% 0%), black 0%, transparent 75%);
-}
-
-.wwd-dot-grid--top-right {
-  top: 0;
-  right: 0;
-  --wwd-fade-origin: 100% 0%;
-}
-
-.wwd-dot-grid--bottom-left {
-  bottom: 0;
-  left: 0;
-  --wwd-fade-origin: 0% 100%;
-}
-
-@media (max-width: 860px) {
-  .wwd-corner-pattern,
-  .wwd-dot-grid {
-    /* Section narrows and the card grid stacks full-width on smaller
-       screens, leaving no safe corner margin — hide rather than risk
-       ever overlapping the content, per the hard "never overlap"
-       requirement. */
-    display: none;
+@media (min-width: 768px) {
+  .wwd-section {
+    padding: 128px 24px;
   }
 }
-
-.what-we-do-content {
+/* Corner decorations */
+.wwd-speedlines {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.wwd-speedlines--tl {
+  top: -32px;
+  left: -40px;
+  height: 420px;
+  width: 420px;
+  -webkit-mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+}
+.wwd-speedlines--br {
+  bottom: -32px;
+  right: -40px;
+  height: 460px;
+  width: 460px;
+  transform: rotate(180deg);
+  -webkit-mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+}
+.wwd-dotgrid {
+  position: absolute;
+  pointer-events: none;
+  height: 128px;
+  width: 128px;
+}
+.wwd-dotgrid--tr {
+  top: 32px;
+  right: 32px;
+  -webkit-mask-image: radial-gradient(ellipse at top right, black 0%, transparent 75%);
+          mask-image: radial-gradient(ellipse at top right, black 0%, transparent 75%);
+}
+.wwd-dotgrid--bl {
+  bottom: 32px;
+  left: 32px;
+  -webkit-mask-image: radial-gradient(ellipse at bottom left, black 0%, transparent 75%);
+          mask-image: radial-gradient(ellipse at bottom left, black 0%, transparent 75%);
+}
+/* Header */
+.wwd-inner {
   position: relative;
-  z-index: 1;
-  max-width: 760px;
+  z-index: 10;
+  max-width: 768px;
   margin: 0 auto;
   text-align: center;
 }
-
-.section-badge {
+.wwd-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-8);
-  font-size: 13px;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--color-ink-500);
-  margin-bottom: var(--space-24);
+  letter-spacing: 0.15em;
+  color: #1e5bff;
 }
-
-.badge-dot {
-  width: 8px;
+.wwd-eyebrow-dot {
+  display: inline-block;
   height: 8px;
-  background: var(--gradient-accent);
-  border-radius: 50%;
-  animation: pulseDot 2s ease-in-out infinite;
+  width: 8px;
+  border-radius: 9999px;
+  background: #1e5bff;
 }
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(30px, 3.6vw, 44px);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.5px;
-  color: var(--color-ink-900);
-  margin-bottom: var(--space-16);
+.wwd-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0b1220;
+  margin: 0;
 }
-
-.section-subline {
+.wwd-subtitle {
+  max-width: 36rem;
+  margin: 24px auto 0;
   font-size: 16px;
   line-height: 1.6;
-  color: var(--color-ink-700);
-  max-width: 480px;
-  margin: 0 auto 48px;
+  color: #475569;
 }
-
-.niche-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-24);
-  text-align: left;
-}
-
-.niche-card {
+/* Cards */
+.wwd-grid {
   position: relative;
-  z-index: 1;
-  background: var(--color-white);
-  border: 1px solid rgba(20, 20, 40, 0.06);
-  border-radius: var(--radius-md);
-  padding: var(--space-32) var(--space-24);
-  box-shadow: 0 1px 2px rgba(20, 20, 40, 0.04), 0 8px 24px rgba(20, 20, 40, 0.05);
-  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium), border-color 0.35s var(--ease-premium);
+  z-index: 10;
+  max-width: 1024px;
+  margin: 56px auto 0;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
 }
-
-.niche-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(var(--color-accent-rgb), 0.25);
-  box-shadow: 0 1px 2px rgba(20, 20, 40, 0.04), 0 20px 40px rgba(20, 20, 40, 0.09), 0 0 0 1px rgba(var(--color-accent-rgb), 0.06);
-}
-
-.niche-icon {
-  color: var(--color-accent);
-  margin-bottom: var(--space-16);
-}
-
-.niche-name {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--color-ink-900);
-  margin-bottom: 10px;
-}
-
-.niche-line {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-ink-700);
-}
-
-@media (max-width: 860px) {
-  .niche-grid {
-    grid-template-columns: 1fr;
+@media (min-width: 768px) {
+  .wwd-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+.wwd-card {
+  position: relative;
+  border-radius: 16px;
+  background: #fff;
+  padding: 32px;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  box-shadow: 0 10px 30px -15px rgba(20, 20, 40, 0.15);
+  transition: all 0.3s ease;
+}
+.wwd-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(30, 91, 255, 0.4);
+  box-shadow: 0 20px 50px -20px rgba(30, 91, 255, 0.3);
+}
+.wwd-card--featured {
+  border: 2px solid rgba(30, 91, 255, 0.5);
+  box-shadow: 0 20px 50px -20px rgba(30, 91, 255, 0.35);
+}
+.wwd-card--featured:hover {
+  transform: none;
+}
+.wwd-card-icon {
+  height: 28px;
+  width: 28px;
+  color: #1e5bff;
+  margin-bottom: 40px;
+}
+.wwd-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0b1220;
+  margin: 0;
+}
+.wwd-card-line {
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
 }
