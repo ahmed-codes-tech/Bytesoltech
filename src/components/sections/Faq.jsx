@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { faqs } from '../../data/faqs';
-import { SOCIAL_ICONS} from '../../data/socialIcons';
-import './Faq.css';
+import React, { useState, useRef, useEffect } from "react";
+import { faqs } from "../../data/faqs";
+import { SOCIAL_ICONS } from "../../data/socialIcons";
+import "./Faq.css";
 
 const Faq = ({ onScheduleClick }) => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -13,7 +13,7 @@ const Faq = ({ onScheduleClick }) => {
       (entries) => {
         if (entries[0].isIntersecting) setVisible(true);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -32,12 +32,15 @@ const Faq = ({ onScheduleClick }) => {
             <span>FAQs</span>
           </div>
           <h2 className={`faq-title ${visible ? "visible" : ""}`}>
-            Transformation with<br />
+            Transformation with
+            <br />
             Smart UX &<br />
             Scalable Tech
           </h2>
           <p className={`faq-description ${visible ? "visible" : ""}`}>
-            You have the vision — we build the system around it. At Bytesoltech, we combine web development, local SEO, and AI automation to turn your online presence into your best salesperson.
+            You have the vision — we build the system around it. At Bytesoltech,
+            we combine web development, local SEO, and AI automation to turn
+            your online presence into your best salesperson.
           </p>
         </div>
 
@@ -49,7 +52,10 @@ const Faq = ({ onScheduleClick }) => {
                 className={`faq-item ${openIndex === index ? "active" : ""} ${visible ? "visible" : ""}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <button className="faq-question" onClick={() => toggleFaq(index)}>
+                <button
+                  className="faq-question"
+                  onClick={() => toggleFaq(index)}
+                >
                   <span>{faq.question}</span>
                   <span className="faq-icon">+</span>
                 </button>
@@ -69,23 +75,22 @@ const Faq = ({ onScheduleClick }) => {
       </div>
 
       <div className="faq-social-icons">
-  {['linkedin', 'instagram', 'facebook', 'youtube', 'whatsapp', 'email', 'phone'].map((platform, i) => (
-    <button
-      key={i}
-      className="faq-social-icon"
-      aria-label={platform}
-    >
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-      >
-        <path d={SOCIAL_ICONS[platform]} />
-      </svg>
-    </button>
-  ))}
-</div>
+        {[
+          "linkedin",
+          "instagram",
+          "facebook",
+          "youtube",
+          "whatsapp",
+          "email",
+          "phone",
+        ].map((platform, i) => (
+          <button key={i} className="faq-social-icon" aria-label={platform}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d={SOCIAL_ICONS[platform]} />
+            </svg>
+          </button>
+        ))}
+      </div>
     </section>
   );
 };

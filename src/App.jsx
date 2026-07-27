@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <Home />
-      {/* <Hero /> */}
+      <Hero />
       <WhatWeDo />
       <Innovations />
       <Partners />
@@ -27,7 +27,7 @@ function App() {
       <Astronaut />
       <Footer />
       <ChatWidget />
-      {/* {/<ScheduleModal /> */} */}
+      {/* <ScheduleModal /> */}
     </div>
   );
 }
