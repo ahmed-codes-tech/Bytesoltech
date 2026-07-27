@@ -11,7 +11,6 @@ const ChatWidget = () => {
     setChatInput,
     isTyping,
     unreadMessages,
-    setUnreadMessages,
     sendMessage,
     quickAction,
   } = useChat();
