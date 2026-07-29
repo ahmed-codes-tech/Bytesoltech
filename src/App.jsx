@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import './styles/global.css';
 // import Hero from './components/sections/Hero';
 import WhatWeDo from './components/sections/WhatWeDo';
-import Innovations from './components/sections/Innovations';
+import Portfolio from './components/sections/Portfolio';
 import Partners from './components/sections/Partners';
 import Services from './components/sections/Services';
 import Testimonials from './components/sections/Testimonials';
@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Home />
       <WhatWeDo />
-      <Innovations />
+      <Portfolio />
       <Partners />
       <Services />
       <Testimonials />
