@@ -161,7 +161,7 @@ function ProjectCard({ brand, tag, title, desc, image, imageAlt, layout, copyTit
         <h3 className="portfolio-card-title">{title}</h3>
         <p className="portfolio-card-desc">{desc}</p>
         <div className="portfolio-card-footer">
-          <a href="#" className="portfolio-card-link">View Project <IconArrow /></a>
+          <a href="/" className="portfolio-card-link">View Project <IconArrow /></a>
           <button className="portfolio-card-arrow"><IconArrow /></button>
         </div>
       </div>
