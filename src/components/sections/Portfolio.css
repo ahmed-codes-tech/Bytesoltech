@@ -3,7 +3,7 @@
   min-height: 100vh;
   background: #f4f6fb;
   padding: 60px 24px 80px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
   color: #0b1a3b;
   overflow: hidden;
 }
@@ -61,6 +61,7 @@
   margin-bottom: 22px;
 }
 .portfolio-title {
+  font-family: 'Sora', system-ui, sans-serif;
   font-size: 56px; line-height: 1.08; font-weight: 800;
   color: #0a1e4c; letter-spacing: -1.5px; margin: 0 0 22px;
 }
@@ -82,6 +83,8 @@
   background: #e6efff; display: grid; place-items: center; margin: 0 auto 14px;
 }
 .portfolio-stat-num {
+  font-family: 'Sora', system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
   font-size: 40px; font-weight: 800; color: #0a1e4c; letter-spacing: -1px;
 }
 .portfolio-stat-label { font-size: 14px; color: #475569; margin-top: 4px; line-height: 1.3; }
@@ -136,11 +139,12 @@
 .portfolio-featured-image img { width: 100%; height: auto; border-radius: 6px; }
 .portfolio-featured-body { padding: 44px 44px 44px 20px; display: flex; flex-direction: column; gap: 24px; }
 .portfolio-featured-body h3 {
+  font-family: 'Sora', system-ui, sans-serif;
   font-size: 34px; font-weight: 800; color: #0a1e4c; margin: 0; letter-spacing: -0.5px;
 }
 .portfolio-featured-body p { color: #475569; font-size: 15px; margin: 0; line-height: 1.55; max-width: 420px; }
 .portfolio-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.portfolio-metric-top { display: flex; align-items: center; gap: 8px; font-weight: 800; color: #0a1e4c; font-size: 20px; }
+.portfolio-metric-top { font-family: 'Sora', system-ui, sans-serif; display: flex; align-items: center; gap: 8px; font-weight: 800; color: #0a1e4c; font-size: 20px; }
 .portfolio-metric-label { color: #64748b; font-size: 13px; margin-top: 4px; }
 .portfolio-featured-actions { display: flex; gap: 12px; margin-top: 4px; }
 .btn-primary {
@@ -192,7 +196,7 @@
 .portfolio-card-tag {
   color: #1d4ed8; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 6px;
 }
-.portfolio-card-title { font-size: 20px; font-weight: 800; color: #0a1e4c; margin: 0 0 6px; }
+.portfolio-card-title { font-family: 'Sora', system-ui, sans-serif; font-size: 20px; font-weight: 800; color: #0a1e4c; margin: 0 0 6px; }
 .portfolio-card-desc { color: #475569; font-size: 14px; line-height: 1.55; margin: 0 0 16px; }
 .portfolio-card-footer { display: flex; align-items: center; justify-content: space-between; }
 .portfolio-card-link {

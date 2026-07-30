@@ -8,12 +8,60 @@ import luxoriaImg from "./../../assets/portfolio-luxoria.jpg";
 import nexoraImg from "./../../assets/portfolio-nexora.jpg";
 import medicareImg from "./../../assets/portfolio-medicare.jpg";
 import travoraImg from "./../../assets/portfolio-travora.jpg";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const FILTERS = ["All Work", "Website", "Web Applications", "Mobile Apps", "Branding", "SEO / PPC", "UI / UX"];
 
+function useCountUp(target, active, duration = 1600) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!active) return;
+    let raf;
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setValue(Math.round(target * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, active, duration]);
+
+  return value;
+}
+
+function StatNumber({ value, suffix = "", active }) {
+  const n = useCountUp(value, active);
+  return <div className="portfolio-stat-num">{n}{suffix}</div>;
+}
+
 export default function Portfolio() {
   const [active, setActive] = useState("All Work");
+  const statsRef = useRef(null);
+  const [statsVisible, setStatsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setStatsVisible(true);
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setStatsVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
 
   return (
     <section className="portfolio">
@@ -35,21 +83,22 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <div className="portfolio-stats">
+          <div className="portfolio-stats" ref={statsRef}>
             <div className="portfolio-stat">
               <div className="portfolio-stat-icon"><IconBox /></div>
-              <div className="portfolio-stat-num">150+</div>
+              <StatNumber value={150} suffix="+" active={statsVisible} />
               <div className="portfolio-stat-label"><b>Projects</b>Delivered</div>
             </div>
             <div className="portfolio-stat">
               <div className="portfolio-stat-icon"><IconGlobe /></div>
-              <div className="portfolio-stat-num">30+</div>
+              <StatNumber value={30} suffix="+" active={statsVisible} />
               <div className="portfolio-stat-label"><b>Industries</b>Served</div>
             </div>
             <div className="portfolio-stat">
               <div className="portfolio-stat-icon"><IconUsers /></div>
-              <div className="portfolio-stat-num">98%</div>
+              <StatNumber value={98} suffix="%" active={statsVisible} />
               <div className="portfolio-stat-label"><b>Client</b>Satisfaction</div>
+
             </div>
           </div>
         </div>

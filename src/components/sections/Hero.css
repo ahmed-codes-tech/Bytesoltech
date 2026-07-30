@@ -307,10 +307,21 @@
   50% { transform: translateY(-12px); }
 }
 
+@media (min-width: 1360px) {
+  .hero-float-card--1 { right: 34%; }
+  .hero-float-card--2 { right: 4%; }
+  .hero-float-card--3 { right: 26%; }
+  .hero-content {         
+    padding: 152px 3px 80px;
+    margin: 0px 100px; 
+  }
+}
+
 @media (max-width: 1180px) {
   .hero-float-card--1 { right: 4%; }
   .hero-float-card--2 { display: none; }
   .hero-float-card--3 { right: 4%; top: 68%; }
+  .hero-content { padding: 140px 32px 60px; }
 }
 
 @media (max-width: 960px) {
