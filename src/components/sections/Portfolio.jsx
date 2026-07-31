@@ -12,6 +12,55 @@ import { useState, useEffect, useRef } from "react";
 
 const FILTERS = ["All Work", "Website", "Web Applications", "Mobile Apps", "Branding", "SEO / PPC", "UI / UX"];
 
+const PROJECTS = [
+  {
+    id: "nexora",
+    categories: ["Mobile Apps", "Web Applications", "UI / UX"],
+    brand: "NEXORA", tag: "FINTECH", title: "Nexora Banking App",
+    desc: "Modern banking experience for the next generation.",
+    image: nexoraImg, imageAlt: "Nexora banking app", layout: "image",
+  },
+  {
+    id: "medicare",
+    categories: ["Web Applications", "Website", "UI / UX"],
+    brand: "MediCare+", tag: "HEALTHCARE", title: "MediCare Plus",
+    desc: "Healthcare platform connecting patients with specialists.",
+    image: medicareImg, imageAlt: "MediCare Plus", layout: "split",
+    copyTitle: "Your Health, Our Priority",
+    copyText: <>Expert care.<br />Better results.<br />Healthier tomorrow.</>,
+  },
+  {
+    id: "travora",
+    categories: ["Website", "Branding", "SEO / PPC"],
+    brand: "TRAVORA", tag: "TRAVEL", title: "Travora Adventures",
+    desc: "Travel platform inspiring journeys around the world.",
+    image: travoraImg, imageAlt: "Travora", layout: "split",
+    copyTitle: <>Explore.<br />Dream.<br />Discover.</>,
+  },
+  {
+    id: "luxoria-store",
+    categories: ["Website", "SEO / PPC", "Branding"],
+    brand: "LUXORIA", tag: "E-COMMERCE", title: "Luxoria Storefront",
+    desc: "Luxury commerce experience with a 180% revenue lift.",
+    image: luxoriaImg, imageAlt: "Luxoria storefront", layout: "image",
+  },
+  {
+    id: "nexora-brand",
+    categories: ["Branding", "UI / UX"],
+    brand: "NEXORA", tag: "IDENTITY", title: "Nexora Brand System",
+    desc: "A full identity system, from logo marks to product UI.",
+    image: nexoraImg, imageAlt: "Nexora brand system", layout: "split",
+    copyTitle: <>Bold.<br />Clear.<br />Timeless.</>,
+  },
+  {
+    id: "medicare-growth",
+    categories: ["SEO / PPC", "Web Applications"],
+    brand: "MediCare+", tag: "GROWTH", title: "MediCare Growth Engine",
+    desc: "Paid search and SEO program driving qualified patient leads.",
+    image: medicareImg, imageAlt: "MediCare growth campaign", layout: "image",
+  },
+];
+
 function useCountUp(target, active, duration = 1600) {
   const [value, setValue] = useState(0);
 
@@ -61,6 +110,10 @@ export default function Portfolio() {
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
+  const visible =
+    active === "All Work"
+      ? PROJECTS
+      : PROJECTS.filter((p) => p.categories.includes(active));
 
 
   return (
@@ -114,10 +167,13 @@ export default function Portfolio() {
               {f}
             </button>
           ))}
-          <button className="portfolio-view-all">View All Projects <IconArrow /></button>
+          <button className="portfolio-view-all" onClick={() => setActive("All Work")}>
+            View All Projects <IconArrow />
+          </button>
         </div>
 
         {/* FEATURED */}
+        {active === "All Work" && (
         <div className="portfolio-featured">
           <div className="portfolio-featured-tag">
             <span>FEATURED CASE STUDY</span>
@@ -151,31 +207,20 @@ export default function Portfolio() {
             </div>
           </div>
         </div>
+        )}
 
         {/* GRID */}
-        <div className="portfolio-grid">
-          <ProjectCard
-            brand="NEXORA" tag="FINTECH" title="Nexora Banking App"
-            desc="Modern banking experience for the next generation."
-            image={nexoraImg} imageAlt="Nexora banking app"
-            layout="image"
-          />
-          <ProjectCard
-            brand="MediCare+" tag="HEALTHCARE" title="MediCare Plus"
-            desc="Healthcare platform connecting patients with specialists."
-            image={medicareImg} imageAlt="MediCare Plus"
-            layout="split"
-            copyTitle="Your Health, Our Priority"
-            copyText={<>Expert care.<br />Better results.<br />Healthier tomorrow.</>}
-          />
-          <ProjectCard
-            brand="TRAVORA" tag="TRAVEL" title="Travora Adventures"
-            desc="Travel platform inspiring journeys around the world."
-            image={travoraImg} imageAlt="Travora"
-            layout="split"
-            copyTitle={<>Explore.<br />Dream.<br />Discover.</>}
-          />
-        </div>
+        {visible.length > 0 ? (
+          <div className="portfolio-grid">
+            {visible.map((p) => (
+              <ProjectCard key={p.id} {...p} />
+            ))}
+          </div>
+        ) : (
+          <div className="portfolio-empty">
+            No projects in this category yet — check back soon.
+          </div>
+        )}
 
         <BottomRightPattern />
       </div>
